@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Profile</title>
+    <script
+			src="https://kit.fontawesome.com/7717c1610a.js"
+			crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-size: 28px;
+            color: #333;
+            text-align: center;
+        }
+        .section {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .section h3 {
+            margin-top: 0;
+            font-size: 22px;
+            color: #007bff;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"], input[type="email"], input[type="password"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .btn-save {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-save:hover {
+            background-color: #218838;
+        }
+        .faarrow{
+            margin: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="home.html"><i class="fa-solid fa-arrow-left faarrow"></i></a>
+    <div class="container">
+        <h2>Profile</h2>
+
+        <!-- Personal Details Section -->
+        <div class="section">
+            <h3>Personal Details</h3>
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" placeholder="Enter your phone number">
+            </div>
+            <button class="btn-save">Save Personal Details</button>
+        </div>
+
+        <!-- Store Information Section -->
+        <div class="section">
+            <h3>Store Information</h3>
+            <div class="form-group">
+                <label for="storeName">Store Name</label>
+                <input type="text" id="storeName" placeholder="Enter your store name">
+            </div>
+            <div class="form-group">
+                <label for="storeDescription">Store Description</label>
+                <textarea id="storeDescription" rows="4" placeholder="Describe your store"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="storeLogo">Store Logo</label>
+                <input type="file" id="storeLogo">
+            </div>
+            <button class="btn-save">Save Store Information</button>
+        </div>
+
+        <!-- Account Settings Section -->
+        <div class="section">
+            <h3>Account Settings</h3>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter new password">
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm new password">
+            </div>
+            <button class="btn-save">Save Account Settings</button>
+        </div>
+
+        <!-- Instagram Details Section -->
+        <div class="section">
+            <h3>Instagram Details</h3>
+            <div class="form-group">
+                <label for="instagramHandle">Instagram Handle</label>
+                <input type="text" id="instagramHandle" placeholder="Enter your Instagram handle (e.g., @yourhandle)">
+            </div>
+            <div class="form-group">
+                <label for="instagramLink">Instagram Profile Link</label>
+                <input type="text" id="instagramLink" placeholder="Enter your Instagram profile link">
+            </div>
+            <button class="btn-save">Save Instagram Details</button>
+        </div>
+    </div>
+    <script>
+        function menuitems() {
+				document.querySelector(".sideBar").style.display = "block";
+				document.querySelector("i").style.display = "none";
+			}
+    </script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders List</title>
+    <script
+			src="https://kit.fontawesome.com/7717c1610a.js"
+			crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .orders-list-page {
+            max-width: 800px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        header p {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .orders-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .orders-table th, .orders-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .orders-table th {
+            background-color: #f4f4f9;
+            font-weight: bold;
+        }
+
+        .orders-table td {
+            color: #555;
+        }
+
+        .orders-table .button-group {
+            display: flex;
+            gap: 5px;
+        }
+
+        .orders-table button {
+            padding: 5px 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .orders-table button.invoice {
+            background-color: #27ae60;
+        }
+
+        .orders-table button:hover {
+            opacity: 0.9;
+        }
+        .faarrow{
+            position: absolute;
+            top: 0.8rem;
+            left: .8rem;
+            margin: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="home.html"><i class="fa-solid fa-arrow-left faarrow"></i></a>
+    <div class="orders-list-page">
+        <header>
+            <h1>Orders List</h1>
+            <p>Here are the latest orders with key details for quick reference.</p>
+        </header>
+
+        <!-- Orders Table -->
+        <section class="orders-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#12345</td>
+                        <td>Jane Doe</td>
+                        <td>Oct 26, 2024</td>
+                        <td>$43.50</td>
+                        <td>Shipped</td>
+                        <td>
+                            <div class="button-group">
+                                <button>View</button>
+                                <button class="invoice">Invoice</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#12346</td>
+                        <td>John Smith</td>
+                        <td>Oct 25, 2024</td>
+                        <td>$29.99</td>
+                        <td>Delivered</td>
+                        <td>
+                            <div class="button-group">
+                                <button>View</button>
+                                <button class="invoice">Invoice</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#12347</td>
+                        <td>Emily Clark</td>
+                        <td>Oct 24, 2024</td>
+                        <td>$58.75</td>
+                        <td>Processing</td>
+                        <td>
+                            <div class="button-group">
+                                <button>View</button>
+                                <button class="invoice">Invoice</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#12348</td>
+                        <td>Michael Lee</td>
+                        <td>Oct 23, 2024</td>
+                        <td>$35.00</td>
+                        <td>Cancelled</td>
+                        <td>
+                            <div class="button-group">
+                                <button>View</button>
+                                <button class="invoice">Invoice</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#12349</td>
+                        <td>Sarah Brown</td>
+                        <td>Oct 22, 2024</td>
+                        <td>$105.20</td>
+                        <td>Shipped</td>
+                        <td>
+                            <div class="button-group">
+                                <button>View</button>
+                                <button class="invoice">Invoice</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#12350</td>
+                        <td>Chris Green</td>
+                        <td>Oct 21, 2024</td>
+                        <td>$19.99</td>
+                        <td>Delivered</td>
+                        <td>
+                            <div class="button-group">
+                                <button>View</button>
+                                <button class="invoice">Invoice</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#12351</td>
+                        <td>Nancy Wilson</td>
+                        <td>Oct 20, 2024</td>
+                        <td>$89.99</td>
+                        <td>Processing</td>
+                        <td>
+                            <div class="button-group">
+                                <button>View</button>
+                                <button class="invoice">Invoice</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <script>
+        document.querySelectorAll('.button-group button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const action = e.target.textContent;
+                const row = e.target.closest('tr');
+                const orderId = row.cells[0].textContent;
+        
+                if (action === 'View') {
+                    alert(`Viewing details for Order ID: ${orderId}`);
+                } else if (action === 'Invoice') {
+                    alert(`Generating invoice for Order ID: ${orderId}`);
+                }
+            });
+        });
+        </script>
+        
+</body>
+</html>

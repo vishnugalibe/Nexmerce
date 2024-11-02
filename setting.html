@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Control - Settings</title>
+    <link rel="stylesheet" href="setting.css">
+    <script
+			src="https://kit.fontawesome.com/7717c1610a.js"
+			crossorigin="anonymous"></script>
+</head>
+<body>
+    <a href="home.html"><i class="fa-solid fa-arrow-left faarrow"></i></a>
+<div class="container">
+    <h1>Settings</h1>
+
+    <!-- Business Information Section -->
+    <div class="section">
+        <h2 onclick="toggleSection(this)">Business Information</h2>
+        <div class="content">
+            <form action="save_settings.php" method="POST" enctype="multipart/form-data">
+                <label for="businessName">Business Name:</label>
+                <input type="text" name="businessName" id="businessName" required>
+
+                <label for="logo">Logo Upload:</label>
+                <input type="file" name="logo" id="logo">
+
+                <label for="contact">Contact Information:</label>
+                <input type="text" name="contact" placeholder="Phone, Email, Address" required>
+
+                <label for="hours">Operating Hours:</label>
+                <input type="text" name="hours" placeholder="e.g., 9 AM - 5 PM">
+                
+                <button type="submit" name="save_business_info">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Account Settings Section -->
+    <div class="section">
+        <h2 onclick="toggleSection(this)">Account Settings</h2>
+        <div class="content">
+            <form action="save_settings.php" method="POST">
+                <label for="userName">User Profile:</label>
+                <input type="text" name="userName" placeholder="Name">
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" placeholder="Email Address">
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" placeholder="New Password">
+
+                <button type="submit" name="save_account_settings">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Other Sections -->
+    <!-- Add similar sections for User Management, Notifications, Integrations, and Billing -->
+
+</div>
+
+<script src="setting.js"></script>
+</body>
+</html>

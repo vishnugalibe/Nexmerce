@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Inventory Management - E-commerce Seller</title>
+		<link rel="stylesheet" href="product.css" />
+		<script
+			src="https://kit.fontawesome.com/7717c1610a.js"
+			crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<a href="home.html"><i class="fa-solid fa-arrow-left faarrow"></i></a>
+		<main>
+			<div class="container">
+				<h1>Inventory Management</h1>
+
+				<!-- Form to add or edit products -->
+				<form id="product-form">
+					<h2 id="form-title">Add New Product</h2>
+					<br /><br />
+                    <label for="uploadImage">Upload Image</label>
+					<input
+                        type="file";
+						id="uploadImage"
+						name="uploadImage"
+						class="formInput"
+						placeholder="Upload your image"
+						required />
+					<label for="product-name">Product Name</label>
+					<input
+						type="text"
+						id="product-name"
+						name="product-name"
+						class="formInput"
+						placeholder="Enter product name"
+						required />
+
+					<label for="category">Category</label>
+					<input
+						type="text"
+						id="category"
+						name="category"
+						class="formInput"
+						placeholder="Enter product category"
+						required />
+
+					<label for="quantity">Quantity</label>
+					<input
+						type="number"
+						id="quantity"
+						name="quantity"
+						class="formInput"
+						placeholder="Enter quantity"
+						required
+						min="0" />
+
+					<label for="price">Price (₹)</label>
+					<input
+						type="number"
+						id="price"
+						name="price"
+						placeholder="Enter price in ₹"
+						class="formInput"
+						required
+						min="0" />
+
+					<input type="hidden" id="edit-index" />
+					<button type="submit">Save Product</button>
+				</form>
+
+				<!-- Inventory table -->
+				<table id="inventory-table">
+					<thead>
+						<tr>
+							<th>Product Name</th>
+							<th>Category</th>
+							<th>Quantity</th>
+							<th>Price (₹)</th>
+							<th>Status</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Inventory items will be dynamically inserted here -->
+					</tbody>
+				</table>
+			</div>
+		</main>
+		<script src="product.js"></script>
+		<script>
+			let inventory = [
+				{ name: "Laptop", category: "Electronics", quantity: 10, price: 50000 },
+				{
+					name: "Mobile Phone",
+					category: "Electronics",
+					quantity: 0,
+					price: 25000,
+				},
+				{
+					name: "Headphones",
+					category: "Accessories",
+					quantity: 50,
+					price: 2000,
+				},
+				{ name: "T-shirt", category: "Clothing", quantity: 100, price: 499 },
+				{ name: "Shoes", category: "Footwear", quantity: 0, price: 1999 },
+			];
+
+			let isEditing = false;
+
+			// Function to display the inventory
+			function displayInventory() {
+				const tableBody = document.querySelector("#inventory-table tbody");
+				tableBody.innerHTML = ""; // Clear the table before inserting new rows
+
+				inventory.forEach((item, index) => {
+					const row = document.createElement("tr");
+
+					const nameCell = document.createElement("td");
+					nameCell.textContent = item.name;
+
+					const categoryCell = document.createElement("td");
+					categoryCell.textContent = item.category;
+
+					const quantityCell = document.createElement("td");
+					quantityCell.textContent = item.quantity;
+
+					const priceCell = document.createElement("td");
+					priceCell.textContent = `₹${item.price.toFixed(2)}`;
+
+					const statusCell = document.createElement("td");
+					const statusSpan = document.createElement("span");
+					statusSpan.classList.add("status");
+					statusSpan.textContent =
+						item.quantity > 0 ? "In Stock" : "Out of Stock";
+					statusSpan.classList.add(
+						item.quantity > 0 ? "in-stock" : "out-of-stock"
+					);
+					statusCell.appendChild(statusSpan);
+
+					const actionsCell = document.createElement("td");
+					const editButton = document.createElement("button");
+					editButton.textContent = "Edit";
+					editButton.classList.add("edit-btn");
+					editButton.addEventListener("click", () => editProduct(index));
+
+					const deleteButton = document.createElement("button");
+					deleteButton.textContent = "Delete";
+					deleteButton.classList.add("delete-btn");
+					deleteButton.addEventListener("click", () => deleteProduct(index));
+
+					actionsCell.appendChild(editButton);
+					actionsCell.appendChild(deleteButton);
+
+					row.appendChild(nameCell);
+					row.appendChild(categoryCell);
+					row.appendChild(quantityCell);
+					row.appendChild(priceCell);
+					row.appendChild(statusCell);
+					row.appendChild(actionsCell);
+
+					tableBody.appendChild(row);
+				});
+			}
+
+			// Function to add a new product or edit an existing product
+			function saveProduct(event) {
+				event.preventDefault();
+
+				const name = document.getElementById("product-name").value;
+				const category = document.getElementById("category").value;
+				const quantity = parseInt(document.getElementById("quantity").value);
+				const price = parseFloat(document.getElementById("price").value);
+
+				if (!name || !category || isNaN(quantity) || isNaN(price)) {
+					alert("Please enter valid product details.");
+					return;
+				}
+
+				const product = { name, category, quantity, price };
+
+				if (isEditing) {
+					const index = document.getElementById("edit-index").value;
+					inventory[index] = product;
+					isEditing = false;
+				} else {
+					inventory.push(product);
+				}
+
+				document.getElementById("product-form").reset();
+				document.getElementById("form-title").textContent = "Add New Product";
+				displayInventory();
+			}
+
+			// Function to delete a product
+			function deleteProduct(index) {
+				inventory.splice(index, 1);
+				displayInventory();
+			}
+
+			// Function to edit a product
+			function editProduct(index) {
+				const product = inventory[index];
+
+				document.getElementById("product-name").value = product.name;
+				document.getElementById("category").value = product.category;
+				document.getElementById("quantity").value = product.quantity;
+				document.getElementById("price").value = product.price;
+				document.getElementById("edit-index").value = index;
+
+				document.getElementById("form-title").textContent = "Edit Product";
+				isEditing = true;
+			}
+
+			// Event listener for form submission
+			document
+				.getElementById("product-form")
+				.addEventListener("submit", saveProduct);
+
+			// Initial display of inventory on page load
+			displayInventory();
+
+			// adding the side bar using burger
+			function menuitems() {
+				document.querySelector(".sideBar").style.display = "block";
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Account Balance & Recent Orders</title>
+		<link rel="stylesheet" href="home.css"/>
+		<script
+			src="https://kit.fontawesome.com/7717c1610a.js"
+			crossorigin="anonymous"></script>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f8f9fa;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				position: relative;
+			}
+			body > i {
+				position: absolute;
+				top: 2rem;
+				left: 2rem;
+				margin-bottom: 0.6rem;
+				font-size: 1.3rem;
+				cursor: pointer;
+			}
+			.container {
+				width: 80%;
+				max-width: 800px;
+				background-color: #fff;
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+				position: relative;
+			}
+			.balance-section,
+			.orders-section {
+				margin-bottom: 20px;
+			}
+			.balance-section h2,
+			.orders-section h2 {
+				font-size: 24px;
+				margin: 0 0 10px;
+				color: #333;
+			}
+			.total-balance {
+				font-size: 32px;
+				font-weight: bold;
+				color: #28a745;
+			}
+			.tax-calculator-btn {
+				position: absolute;
+				top: 20px;
+				right: 20px;
+				padding: 10px 20px;
+				font-size: 16px;
+				color: #fff;
+				background-color: #007bff;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				text-align: center;
+			}
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-top: 10px;
+			}
+			th,
+			td {
+				padding: 12px;
+				text-align: left;
+				border-bottom: 1px solid #ddd;
+			}
+			th {
+				background-color: #007bff;
+				color: #fff;
+			}
+			.order-status {
+				font-weight: bold;
+			}
+			.completed {
+				color: #28a745;
+			}
+			.pending {
+				color: #ffc107;
+			}
+			.cancelled {
+				color: #dc3545;
+			}
+			.sideBar {
+				display: none;
+				position: fixed;
+				z-index: 999;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<i class="fa-solid fa-bars" onclick="menuitems()"></i>
+		<aside class="sideBar">
+			<div id="sideBarContainer">
+				<i class="fa-solid fa-house" onclick="menuItemsRemoval()"></i>
+				<span>Home</span>
+				<div class="profileInfo">
+					<div class="profilePic"></div>
+					<div class="profileDetails">
+						<span>Hi</span>
+						<p>Happy Store</p>
+					</div>
+				</div>
+				<div id="menuContainer">
+					<div class="menuItems" name="profile">
+						<i class="fa-solid fa-user"></i>
+						<span>Profile</span>
+					</div>
+					<div class="menuItems" name="ranking">
+						<i class="fa-solid fa-ranking-star"></i>
+						<span>Ranking</span>
+					</div>
+					<div class="menuItems" name="rating">
+						<i class="fa-solid fa-star"></i>
+						<span>Rating</span>
+					</div>
+					<div class="menuItems" name="orders">
+						<i class="fa-solid fa-cart-shopping"></i>
+						<span>Orders</span>
+					</div>
+					<div class="menuItems" name="setting">
+						<i class="fa-solid fa-gear"></i>
+						<span>Setting</span>
+					</div>
+					<div class="menuItems">
+						<i class="fa-solid fa-right-from-bracket"></i>
+						<span>Logout</span>
+					</div>
+				</div>
+			</div>
+		</aside>
+		<div class="container">
+			<!-- Tax Calculator Button in Top Right Corner -->
+			<button class="tax-calculator-btn" onclick="calculateTax()">
+				Create Invoice
+			</button>
+
+			<!-- Balance Section -->
+			<div class="balance-section">
+				<h2>Total Balance</h2>
+				<p class="total-balance">$1,250.00</p>
+			</div>
+
+			<!-- Recent Orders Section -->
+			<div class="orders-section">
+				<h2>Recent Orders</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Order ID</th>
+							<th>Date</th>
+							<th>Amount</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>#1024</td>
+							<td>2023-10-20</td>
+							<td>$150.00</td>
+							<td class="order-status completed">Completed</td>
+						</tr>
+						<tr>
+							<td>#1023</td>
+							<td>2023-10-15</td>
+							<td>$85.00</td>
+							<td class="order-status pending">Pending</td>
+						</tr>
+						<tr>
+							<td>#1022</td>
+							<td>2023-10-10</td>
+							<td>$210.00</td>
+							<td class="order-status cancelled">Cancelled</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<!-- JavaScript for Tax Calculator -->
+		<script>
+			let menuItems = document.querySelectorAll(".menuItems");
+			function calculateTax() {
+				window.location.assign("./invoice.html");
+			}
+			function menuitems() {
+				document.querySelector(".sideBar").style.display = "block";
+				document.querySelector("i").style.display = "none";
+			}
+			function menuItemsRemoval() {
+				window.location.assign("home.html");
+			}
+			menuItems[0].addEventListener("click", () => {
+				window.location.assign("profile.html");
+			});
+			menuItems[1].addEventListener("click", () => {
+				window.location.assign("ranking.html");
+			});
+			menuItems[2].addEventListener("click", () => {
+				window.location.assign("rating.html");
+			});
+			menuItems[3].addEventListener("click", () => {
+				window.location.assign("order.html");
+			});
+			menuItems[4].addEventListener("click", () => {
+				window.location.assign("setting.html");
+			});
+			menuItems[5].addEventListener("click",()=>{
+				window.location.assign("index.html");
+			});
+		</script>
+	</body>
+</html>

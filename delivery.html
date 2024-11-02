@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Delivery Management</title>
+		<link rel="stylesheet" href="delivery.css" />
+        <script
+			src="https://kit.fontawesome.com/7717c1610a.js"
+			crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<!-- Sidebar -->
+		<a href="home.html"><i class="fa-solid fa-arrow-left faarrow"></i></a>
+
+		<!-- Main Content -->
+		<div class="main-content">
+			<!-- Header -->
+			<div class="header">
+				<h1>Track Delivery</h1>
+				<div class="header-buttons">
+					<div class="user-avatar">👤</div>
+				</div>
+			</div>
+
+			<!-- Steps Navigation -->
+			<div class="steps-nav">
+				<span>Order enter</span> ➔ <span>Order posted</span> ➔
+				<span>Order ready</span> ➔ <span>Order response</span> ➔
+				<span>Order Delivered</span>
+			</div>
+
+			<!-- Delivery Details Table -->
+			<div class="table-container">
+				<h2>Delivery Details</h2>
+				<button id="addDeliveryBtn">+ Add Delivery</button>
+				<table>
+					<thead>
+						<tr>
+							<th>Profile</th>
+							<th>Account</th>
+							<th>Rating</th>
+							<th>Date Created</th>
+							<th>Date Modified</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Rows will be dynamically added with JavaScript -->
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<script>
+            const deliveryData = [
+    { name: 'Dani Daniels', role: 'Lawn care specialist', account: 'ACRID Corp', rating: 3, created: '23/10/22', modified: '24/10/22' },
+    { name: 'Michaele Caine', role: 'Eye Doctor', account: 'ACRID Corp', rating: 4, created: '25/10/22', modified: '26/10/22' },
+    { name: 'Darren Watson', role: 'Leg specialist', account: 'ACRID Corp', rating: 2, created: '27/10/22', modified: '28/10/22' },
+    { name: 'Matilda Misouri', role: 'Lawn care specialist', account: 'ACRID Corp', rating: 4, created: '29/10/22', modified: '30/10/22' },
+    // Additional entries can be added here
+];
+
+const tableBody = document.querySelector('table tbody');
+
+function loadTableData(data) {
+    data.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td>${item.name} <br> <span class="subtext">${item.role}</span></td>
+        <td>${item.account}</td>
+        <td>${'⭐'.repeat(item.rating)}</td>
+        <td>${item.created}</td>
+        <td>${item.modified}</td>
+        <td><button>...</button></td>
+      `;
+        tableBody.appendChild(row);
+    });
+}
+
+// Load data when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    loadTableData(deliveryData);
+});
+        </script>
+	</body>
+</html>

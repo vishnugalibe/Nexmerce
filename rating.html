@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratings & Reviews</title>
+    <script
+			src="https://kit.fontawesome.com/7717c1610a.js"
+			crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-size: 28px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        /* Overall Rating Section */
+        .overall-rating {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 8px;
+        }
+        .overall-rating .rating-value {
+            font-size: 40px;
+            font-weight: bold;
+        }
+        .overall-rating .stars {
+            color: #FFD700;
+            font-size: 24px;
+        }
+        .review-item {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+        .review-item:last-child {
+            border-bottom: none;
+        }
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .review-header .customer-name {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .review-header .rating {
+            color: #FFD700;
+        }
+        .review-body {
+            margin-top: 10px;
+            color: #555;
+        }
+        .review-footer {
+            margin-top: 10px;
+        }
+        .response {
+            margin-top: 10px;
+            padding-left: 20px;
+            border-left: 3px solid #007bff;
+            color: #333;
+        }
+        .form-group {
+            margin-top: 15px;
+        }
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+            font-size: 14px;
+        }
+        .btn-respond {
+            padding: 8px 15px;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+        .btn-respond:hover {
+            background-color: #218838;
+        }
+        .faarrow{
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            margin: 3rem;
+        }
+     </style>
+</head>
+<body>
+    <a href="home.html"><i class="fa-solid fa-arrow-left faarrow"></i></a>
+    <div class="container">
+        <h2>Ratings & Reviews</h2>
+
+        <!-- Overall Rating Summary -->
+        <div class="overall-rating">
+            <div class="rating-value">4.5</div>
+            <div class="stars">★★★★☆</div>
+            <div>Total Reviews: 120</div>
+        </div>
+
+        <!-- Review Item 1 -->
+        <div class="review-item">
+            <div class="review-header">
+                <span class="customer-name">John Doe</span>
+                <span class="rating">★★★★★</span>
+            </div>
+            <div class="review-body">
+                "Great quality products and fast delivery! Highly recommended."
+            </div>
+            <div class="review-footer">
+                <span>Reviewed on: 2023-10-10</span>
+            </div>
+            <!-- Seller Response -->
+            <div class="response">
+                <strong>Response:</strong> Thank you, John! We are glad you enjoyed your experience.
+            </div>
+            <!-- Respond Form -->
+            <div class="form-group">
+                <label for="response-1">Respond to this review:</label>
+                <textarea id="response-1" placeholder="Write your response..."></textarea>
+                <button class="btn-respond">Submit Response</button>
+            </div>
+        </div>
+
+        <!-- Review Item 2 -->
+        <div class="review-item">
+            <div class="review-header">
+                <span class="customer-name">Jane Smith</span>
+                <span class="rating">★★★★☆</span>
+            </div>
+            <div class="review-body">
+                "Good service but shipping took a bit longer than expected."
+            </div>
+            <div class="review-footer">
+                <span>Reviewed on: 2023-09-20</span>
+            </div>
+            <!-- Respond Form -->
+            <div class="form-group">
+                <label for="response-2">Respond to this review:</label>
+                <textarea id="response-2" placeholder="Write your response..."></textarea>
+                <button class="btn-respond">Submit Response</button>
+            </div>
+        </div>
+
+        <!-- Additional reviews can be added here in similar format -->
+
+    </div>
+</body>
+</html>

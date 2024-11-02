@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Details</title>
+    <script
+			src="https://kit.fontawesome.com/7717c1610a.js"
+			crossorigin="anonymous"></script>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            position: relative;
+        }
+        .faarrow{
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+        }
+        /* Container */
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        /* Filter and Search Section */
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            gap: 10px;
+        }
+
+        .filters input[type="date"],
+        .filters input[type="text"],
+        .filters button {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .filters button {
+            background-color: #5cb85c;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .filters button:hover {
+            background-color: #4cae4c;
+        }
+
+        /* Summary Section */
+        .summary {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .summary .summary-item {
+            text-align: center;
+        }
+
+        .summary .summary-item h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .summary .summary-item p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Transaction Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f8f8f8;
+            color: #333;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Status Styles */
+        .status-paid {
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .status-pending {
+            color: #ff9800;
+            font-weight: bold;
+        }
+
+        .status-refunded {
+            color: #f44336;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="home.html"><i class="fa-solid fa-arrow-left faarrow"></i></a>
+<div class="container">
+    <!-- Header -->
+    <header>
+        Transaction Details
+    </header>
+
+    <!-- Filters Section -->
+    <div class="filters">
+        <input type="date" id="start-date" name="start-date" placeholder="Start Date">
+        <input type="date" id="end-date" name="end-date" placeholder="End Date">
+        <input type="text" id="search-bar" placeholder="Search by Order ID or Product">
+        <button onclick="filterTransactions()">Filter</button>
+    </div>
+
+    <!-- Summary Section -->
+    <div class="summary">
+        <div class="summary-item">
+            <h3>$15,320</h3>
+            <p>Total Sales</p>
+        </div>
+        <div class="summary-item">
+            <h3>200</h3>
+            <p>Total Transactions</p>
+        </div>
+        <div class="summary-item">
+            <h3>$1,220</h3>
+            <p>Total Refunds</p>
+        </div>
+    </div>
+
+    <!-- Transaction Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Product</th>
+                <th>Amount ($)</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>#12345</td>
+                <td>2024-10-12</td>
+                <td>Wireless Earbuds</td>
+                <td>80</td>
+                <td><span class="status-paid">Paid</span></td>
+            </tr>
+            <tr>
+                <td>#12346</td>
+                <td>2024-10-13</td>
+                <td>Smart Watch</td>
+                <td>150</td>
+                <td><span class="status-pending">Pending</span></td>
+            </tr>
+            <tr>
+                <td>#12347</td>
+                <td>2024-10-14</td>
+                <td>Bluetooth Speaker</td>
+                <td>65</td>
+                <td><span class="status-refunded">Refunded</span></td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // Placeholder function to handle filter actions (no backend in this example)
+    function filterTransactions() {
+        const startDate = document.getElementById('start-date').value;
+        const endDate = document.getElementById('end-date').value;
+        const searchBar = document.getElementById('search-bar').value;
+
+        alert(`Filter applied!\nStart Date: ${startDate}\nEnd Date: ${endDate}\nSearch Term: ${searchBar}`);
+        // Here, you would typically fetch and display filtered data.
+    }
+</script>
+
+</body>
+</html>
